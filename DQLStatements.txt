@@ -1,0 +1,84 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\SONY>mysql -u root -p;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: Y
+ES)
+
+C:\Users\SONY>mysql -u root -p
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aadhar             |
+| driving_license    |
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student            |
+| sys                |
+| vehicles           |
+| world              |
++--------------------+
+11 rows in set (0.10 sec)
+
+mysql> use aadhar;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_aadhar |
++------------------+
+| aadhar_details   |
+| checklist        |
++------------------+
+2 rows in set (0.09 sec)
+
+mysql> select *from aadhar_details;
++------------+-------+------------+-----------+
+| aadhar_no  | name  | dob        | mobile    |
++------------+-------+------------+-----------+
+|    1321121 | kumar | 16/2/1988  | 984893399 |
+|   12321121 | anand | 10/2/1898  | 984893399 |
+|  123232112 | raju  | 10/12/1998 |   9848933 |
+| 1232321121 | ramu  | 10/2/1998  | 984893399 |
++------------+-------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select name,dob from aadhar_details;
++-------+------------+
+| name  | dob        |
++-------+------------+
+| kumar | 16/2/1988  |
+| anand | 10/2/1898  |
+| raju  | 10/12/1998 |
+| ramu  | 10/2/1998  |
++-------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select aadhar_no,name,dob from aadhar_details where dob>'10/2/1998';
++-----------+-------+-----------+
+| aadhar_no | name  | dob       |
++-----------+-------+-----------+
+|   1321121 | kumar | 16/2/1988 |
++-----------+-------+-----------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql>
